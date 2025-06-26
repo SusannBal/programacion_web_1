@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sistema Talento Humano</title>
+    <link rel="stylesheet" href="asserts/style/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jspdf-autotable@3.5.28/dist/jspdf.plugin.autotable.min.js"></script>
+  </head>
+  <body>
+    <h1>Sistema de Talento Humano</h1>
+    <div class="tabs">
+      <button class="tab-button active" onclick="openTab('candidatos')">
+        Candidatos
+      </button>
+      <button class="tab-button" onclick="openTab('postulaciones')">
+        Postulaciones
+      </button>
+      <button class="tab-button" onclick="openTab('vacantes')">Vacantes</button>
+      <button class="tab-button" onclick="openTab('reportes')">Reportes</button>
+    </div>
+    <div id="candidatos" class="tab-content active">
+      <h2>Gestión de Candidatos</h2>
+      <div class="form-container">
+        <h3>Registrar Nuevo Candidato</h3>
+        <input type="text" id="candidatoNombre" placeholder="Nombre Completo" />
+        <input
+          type="email"
+          id="candidatoCorreo"
+          placeholder="Correo Electrónico"
+        />
+        <input type="text" id="candidatoTelefono" placeholder="Teléfono" />
+        <input type="text" id="candidatoEducacion" placeholder="Educación" />
+        <input
+          type="text"
+          id="candidatoExperiencia"
+          placeholder="Experiencia"
+        />
+        <input
+          type="text"
+          id="candidatoHabilidades"
+          placeholder="Habilidades"
+        />
+        <input type="text" id="candidatoIdiomas" placeholder="Idiomas" />
+        <input
+          type="text"
+          id="candidatoReferencias"
+          placeholder="Referencias"
+        />
+        <button onclick="crearCandidato()">Registrar Candidato</button>
+      </div>
+      <div class="table-container">
+        <h3>Lista de Candidatos</h3>
+        <table id="tablaCandidatos">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Correo</th>
+              <th>Teléfono</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+    <div id="postulaciones" class="tab-content">
+      <h2>Gestión de Postulaciones</h2>
+
+      <div class="form-container">
+        <h3>Registrar Nueva Postulación</h3>
+        <select id="postulacionCandidato">
+          <option value="">Seleccione un candidato</option>
+        </select>
+        <select id="postulacionVacante">
+          <option value="">Seleccione una vacante</option>
+        </select>
+        <textarea
+          id="postulacionObservacion"
+          placeholder="Observaciones de la entrevista"
+        ></textarea>
+        <button onclick="crearPostulacion()">Registrar Postulación</button>
+      </div>
+
+      <div class="table-container">
+        <h3>Lista de Postulaciones</h3>
+        <table id="tablaPostulaciones">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Candidato</th>
+              <th>Vacante</th>
+              <th>Estado</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+    <div id="vacantes" class="tab-content">
+      <h2>Gestión de Vacantes</h2>
+
+      <div class="form-container">
+        <h3>Crear Nueva Vacante</h3>
+        <input type="text" id="vacanteTitulo" placeholder="Título" />
+        <input type="text" id="vacanteDescripcion" placeholder="Descripción" />
+        <input
+          type="text"
+          id="vacanteDepartamento"
+          placeholder="Departamento"
+        />
+        <button onclick="crearVacante()">Crear Vacante</button>
+      </div>
+      <div class="table-container">
+        <h3>Lista de Vacantes</h3>
+        <table id="tablaVacantes">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Título</th>
+              <th>Departamento</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+    <div id="reportes" class="tab-content">
+      <h2>Generación de Reportes</h2>
+      <div class="form-container">
+        <h3>Generar Nuevo Reporte</h3>
+        <select id="reporteTipo">
+          <option value="Postulaciones">Postulaciones</option>
+          <option value="Candidatos">Candidatos</option>
+          <option value="Vacantes">Vacantes</option>
+        </select>
+        <input type="text" id="reporteGeneradoPor" placeholder="Generado por" />
+        <button onclick="generarReporte()">Generar Reporte</button>
+        <button onclick="generarPDF()">Exportar a PDF</button>
+      </div>
+
+      <div class="table-container">
+        <h3>Historial de Reportes</h3>
+        <table id="tablaReportes">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Tipo</th>
+              <th>Generado por</th>
+              <th>Fecha</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+    <script src="js/main.js"></script>
+    <script src="js/candidato.js"></script>
+    <script src="js/postulacion.js"></script>
+    <script src="js/vacante.js"></script>
+    <script src="js/reporte.js"></script>
+  </body>
+</html>
